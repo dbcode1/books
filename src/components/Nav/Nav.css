@@ -1,0 +1,48 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  background-color: rgb(18, 9, 12);
+}
+
+.nav li {
+  border: none;
+  /* padding: 4em 0 0 0; */
+  width: 100%;
+  height: 100px;
+  display: inline-block;
+  transition: 0.75s;
+  text-align: center;
+  line-height: 100px;
+
+  transition-property: color, background-color, border;
+}
+
+.link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  vertical-align: center;
+  font-weight: 300;
+  color: whitesmoke;
+  transition: background-color 1s;
+}
+a {
+  transition: font-size 0.5s;
+}
+a:hover {
+  font-size: 17px;
+}
+.nav li:hover {
+  background-color: rgb(70, 50, 57);
+}
+.active {
+  background-color: rgb(70, 50, 57);
+  color: rgb(130, 250, 146);
+}

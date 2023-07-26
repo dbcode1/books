@@ -1,0 +1,32 @@
+.fade {
+  font-family: Arial;
+  animation: fadeIn 6s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.error{
+  margin-top: 100px;
+}
+
+.test {
+  margin: 150px auto 0 auto;
+  background-color: lightcyan;
+  height: 70vh;
+  width: 80vw;
+}
+
+.book-wrapper {
+  margin-top: 150px;
+}
+
+.move {
+  margin-top: 150px;
+}

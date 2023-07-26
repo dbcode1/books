@@ -1,0 +1,25 @@
+.date-buttons {
+  list-style: none;
+  width: 90vw;
+  font-size: 14px;
+  position: fixed;
+  top: 110px;
+  margin: 0 0 0 30px;
+}
+
+
+.month{
+  transition-duration: 0.5s;
+  transition-property: background color;
+  padding: 1em;
+}
+
+.month:hover {
+  color: white;
+  border-radius: 4px;
+  background-color: lightblue;
+}
+
+li {
+  cursor: pointer;
+}

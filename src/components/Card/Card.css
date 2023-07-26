@@ -1,0 +1,56 @@
+button.modal-open {
+  border: 2px solid lightgrey;
+  border-bottom: none;
+  border-radius: 4px 8px 0 0;
+  width: 22%;
+  background-color: white;
+  color: grey;
+}
+.modal-button {
+  padding: 4px;
+  width: 10%;
+  border: 1px solid black;
+  align-content: center;
+  color: grey;
+}
+.modal-header {
+  display: inline-block;
+  margin: 0 auto;
+  color: grey;
+  margin-left: 34%;
+}
+
+.card {
+  margin: 0 30px;
+  height: 400px;
+  -webkit-box-shadow: 10px 10px 24px -18px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 24px -18px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 24px -18px rgba(0, 0, 0, 0.75);
+}
+
+.open {
+  display: inline-block;
+  font-size: 14px;
+  margin: 30px 0 0 30px;
+  background: none;
+  border: 1px solid lightgrey;
+  border-radius: 4px 4px 0 0;
+  border-bottom: none;
+  color: rgb(126, 123, 123);
+  background-color: rgb(251, 251, 251);
+  transition-property: color background-color;
+  transition-duration: 0.5s
+}
+
+.open:hover {
+  color: white;
+  background-color: rgb(13, 182, 134);
+  
+}
+.close {
+  border: none;
+  background-color: white;
+  border-radius: 8px 0 0 0;
+  margin: 20px 0 0 2px;
+  font-weight: bold;
+}
