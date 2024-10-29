@@ -31,7 +31,7 @@ button.modal-open {
 .open {
   display: inline-block;
   font-size: 14px;
-  margin: 30px 0 0 30px;
+  margin: 0px 0 0 30px;
   background: none;
   border: 1px solid lightgrey;
   border-radius: 4px 4px 0 0;

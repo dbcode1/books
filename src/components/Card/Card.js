@@ -33,6 +33,7 @@ const Card = (props) => {
   const getSummary = async (title) => {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
     const response = await getText(url);
+    console.log(response)
     const description = response.data.items[0].volumeInfo.description;
     setData({ ...data, description: description });
   };

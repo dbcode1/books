@@ -22,12 +22,11 @@ const customStyles = {
 
 const Book = (props) => {
   const navigate = useNavigate();
-  const { data, setData } = useContext(Context);
 
+  const { data, setData } = useContext(Context);
   const img = props.book.img;
   const title = props.book.title;
   const ISBN = props.book.ISBN;
-  console.log(img)
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 

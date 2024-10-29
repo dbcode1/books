@@ -9,14 +9,14 @@ import Results from "../.././Results/Results";
 const Best = () => {
   const { data, setData } = useContext(Context);
   const getCurrent = async () => {
-    const url = `${process.env.REACT_APP_BEST_URL}`;
+    const url = `https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG&pages=1`;
     const response = await getData(url);
-
     if (response.message) {
       console.log(response.message);
       setData({ ...data, error: response.message });
       alert(response.message);
     }
+    console.log(response)
     const newArr = data.results.slice()
     const newData =[...newArr, ...response]
     
@@ -34,7 +34,7 @@ const Best = () => {
       <ul className="results-ul horizontal">
         <li className="error fade">{data.error}</li>
         {data.results.map((book) => {
-              return <Card book={book}></Card>;
+              return <Card book={book}>CARD</Card>;
             })}
         {/* {data.results.length > 0
           ? data.results.map((book) => {

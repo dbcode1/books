@@ -4,7 +4,7 @@ import axios from "axios";
 export async function getData(url) {
   try {
     const response = await axios.get(url);
-
+    console.log(response)
     const formatted = response.data.results.books;
     return formatted;
   } catch (error) {
@@ -15,6 +15,7 @@ export async function getData(url) {
 export async function getText(url) {
   try {
     const response = await axios.get(url);
+    console.log(response)
     return response;
   } catch (error) {
     alert(error);

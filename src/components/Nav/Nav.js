@@ -21,11 +21,8 @@ const Nav = () => {
 
   return (
     <ul className="nav">
-      <li >
-        <Item name="Home" path="/"></Item>
-      </li>
       <li>
-        <Item name="Current" path="/best"></Item>
+        <Item name="Current" path="/best">ITEM</Item>
       </li>
       <li>
         <Item name="Archive" path="/best-by-date"></Item>

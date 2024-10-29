@@ -30,45 +30,55 @@ const Library = () => {
 
   useEffect(() => {
     console.log("books empty", !books)
-    getBookInfo();
+    if(localStorage.getItem("allbooks" === null)){
+      getBookInfo();
+    }
   }, []);
 
+
+  // set on local storage if empty
   const getBookInfo = async (title) => {
     // make a copy of state
     const allBooks = [];
     //setData({ ...data, results: []})
-    // loop through titles
-    const map = library.map(async (title) => {
-      const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
-      setTimeout(() => {}, 1000);
-      const response = await getText(url);
-      // format response
-      const volume = response.data.items[0].volumeInfo;
-      const author = volume.authors[0];
-      const img = volume.imageLinks.thumbnail;
-      if (!volume.industryIdentifiers) {
-        return;
-      }
-      const ISBN = volume.industryIdentifiers[0].identifier;
-      const description = volume.description;
+    // loop through titles  
+      const map = library.map(async (title) => {
+        const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
+        setTimeout(() => {}, 1000);
+        const response = await getText(url);
+        // format response
+        const volume = response.data.items[0].volumeInfo;
+        const author = volume.authors[0];
+        const img = volume.imageLinks.thumbnail;
+        if (!volume.industryIdentifiers) {
+          return;
+        }
+        const ISBN = volume.industryIdentifiers[0].identifier;
+        const description = volume.description;
 
-      const bookObj = {
-        author: author,
-        img: img,
-        ISBN: ISBN,
-        description: description,
-      };
+        const bookObj = {
+          author: author,
+          img: img,
+          ISBN: ISBN,
+          description: description,
+        };
 
-      // console.log("book obj ===", bookObj);
-      const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
-      if (filterBook.length) {
-        // same data found
-        console.log("filterBook ===", filterBook);
-      } else {
-        allBooks.push(bookObj);
-        setBooks([...books, ...allBooks]);
-      }
-    });
+        // console.log("book obj ===", bookObj);
+        const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
+        if (filterBook.length) {
+          // same data found
+          console.log("filterBook ===", filterBook);
+        } else {
+          allBooks.push(bookObj);
+          setBooks([...books, ...allBooks]);
+        }
+        
+      });
+    if (localStorage.getItem("allBooks" !== null)) {
+      localStorage.setItem(...allBooks)
+    }
+      setBooks([...books, ...localStorage.getItems("books")])
+    }
   };
 
   console.log("BOOKS", data.results);
