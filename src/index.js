@@ -17,8 +17,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
     <Route path="/" element={<Root />} >
-      <Route index element={<Home />} />
-        <Route path='/home' element={<Home />} />
+        <Route index path='/home' element={<Home />} />
           
       <Route path="/best" element={<Best />} />
       <Route path="/best-by-date" element={<BestByDate />} />

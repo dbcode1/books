@@ -30,19 +30,19 @@
   height: 100%;
   vertical-align: center;
   font-weight: 300;
-  color: whitesmoke;
+  color: white;
   transition: background-color 1s;
 }
 a {
   transition: font-size 0.5s;
 }
 a:hover {
-  font-size: 17px;
+  font-size: 14px;
 }
 .nav li:hover {
   background-color: rgb(70, 50, 57);
 }
 .active {
   background-color: rgb(70, 50, 57);
-  color: rgb(130, 250, 146);
+  color: white;
 }
