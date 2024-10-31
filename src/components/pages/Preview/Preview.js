@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Preview.css";
 import { Context } from "../../../Context";
+import Book from '../../../components/Book/Book'
 
 const Preview = () => {
   const navigate = useNavigate();

@@ -23,10 +23,17 @@
   width: 80vw;
 }
 
-.book-wrapper {
-  margin-top: 10px;
-}
+
 
 .move {
   margin-top: 150px;
+}
+
+.library-wrapper {
+  min-height: 100vh;
+  padding: 10em 0 0 2em;
+}
+
+.library-book {
+  width: 500px; 
 }

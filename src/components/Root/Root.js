@@ -7,9 +7,8 @@ const Root = () => {
   return (
     <>
       <Nav></Nav>
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
+      
     </>
   );
 };

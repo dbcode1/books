@@ -4,7 +4,7 @@
   font-size: 14px;
   position: fixed;
   top: 110px;
-  margin: 0 0 0 30px;
+  margin: 0 0 0 35px;
 }
 
 
@@ -12,11 +12,13 @@
   transition-duration: 0.5s;
   transition-property: background color;
   padding: 1em;
+  border-radius: 4px;
+  background-color: lightblue
 }
 
 .month:hover {
   color: white;
-  border-radius: 4px;
+  
   background-color: lightblue;
 }
 

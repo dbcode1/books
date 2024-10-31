@@ -22,6 +22,9 @@ const Nav = () => {
   return (
     <ul className="nav">
       <li>
+        <Item name="Home" path="/home">ITEM</Item>
+      </li>
+      <li>
         <Item name="Current" path="/best">ITEM</Item>
       </li>
       <li>

@@ -29,15 +29,30 @@ const Library = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    console.log("books empty", !books)
-    if(localStorage.getItem("allbooks" === null)){
-      getBookInfo();
-    }
-  }, []);
+    const libraryBooks = JSON.parse(localStorage.getItem("library"))
+      if(libraryBooks){
+        setBooks(...books, ...libraryBooks)
+      } else {
+        //getBookInfo()
+        localStorage.setItem("library", JSON.stringify("books"));
+      }
+    }, []);
 
+  const dummyCall = async () => {
+    const url = 'https://api.placeholderjson.dev/shipments/7EBWXB5'
+    const response = await axios.get(url)
+    console.log(response)
+    setBooks(...books, response.data.orderID)
+  }
+   
 
-  // set on local storage if empty
+  //get localStorage
+  // check contents
+  // if full save library to books
+  // if empty save to library and books
+  
   const getBookInfo = async (title) => {
+    
     // make a copy of state
     const allBooks = [];
     //setData({ ...data, results: []})
@@ -71,23 +86,20 @@ const Library = () => {
         } else {
           allBooks.push(bookObj);
           setBooks([...books, ...allBooks]);
+          
+
         }
         
       });
-    if (localStorage.getItem("allBooks" !== null)) {
-      localStorage.setItem(...allBooks)
-    }
-      setBooks([...books, ...localStorage.getItems("books")])
-    }
   };
 
-  console.log("BOOKS", data.results);
   return (
     <Results>
-      <ul className="results-ul horizontal">
+      <ul className="library-wrapper horizontal">
+        
         {books.length > 0 &&
           books.map((book) => {
-            return <Book book={book}></Book>;
+            return <Book className="library-book" book={book}></Book>;
           })}
       </ul>
     </Results>

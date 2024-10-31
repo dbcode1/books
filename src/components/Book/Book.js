@@ -76,7 +76,6 @@ const Book = (props) => {
         <button className="open book-button" onClick={(e) => openModal(e, ISBN)}>
           Description
         </button>
-        <p>{props.book.name}</p>
         <img src={img} alt="book cover" key={uniqid()} className="bookCover"></img>
       </li>
     </>

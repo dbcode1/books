@@ -65,9 +65,9 @@ export function BestByDate() {
         {months.map((month, i) => {
           i++;
           return (
-            <li className="month" activeClassName="active"  onClick={() => getByDate(i)}>
+            <Link className="month" activeClassName="active"  onClick={() => getByDate(i)}>
               {month}
-            </li>
+            </Link>
           );
         })}
       </ul>
