@@ -22,10 +22,8 @@ button.modal-open {
 
 .card {
   margin: 0 30px;
-  height: 400px;
-  -webkit-box-shadow: 10px 10px 24px -18px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 24px -18px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 24px -18px rgba(0, 0, 0, 0.75);
+  height: 510px;
+  
 }
 
 .open {
@@ -35,7 +33,6 @@ button.modal-open {
   background: none;
   border: 1px solid lightgrey;
   border-radius: 4px 4px 0 0;
-  border-bottom: none;
   color: rgb(126, 123, 123);
   background-color: rgb(251, 251, 251);
   transition-property: color background-color;
@@ -44,7 +41,7 @@ button.modal-open {
 
 .open:hover {
   color: white;
-  background-color: rgb(13, 182, 134);
+  background-color: rgb(142, 112, 232);
   
 }
 .close {

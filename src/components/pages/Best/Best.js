@@ -7,7 +7,9 @@ import Results from "../.././Results/Results";
 
 
 const Best = () => {
+  
   const { data, setData } = useContext(Context);
+  
   const getCurrent = async () => {
     const url = `https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG&pages=1`;
     const response = await getData(url);
@@ -26,6 +28,8 @@ const Best = () => {
   };
 
   useEffect(() => {
+    setData({...data, results: []})
+
     getCurrent();
   }, []);
 

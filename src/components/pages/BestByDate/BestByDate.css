@@ -3,24 +3,30 @@
   width: 90vw;
   font-size: 14px;
   position: fixed;
-  top: 110px;
+  top: 120px;
   margin: 0 0 0 35px;
+  
 }
 
 
 .month{
   transition-duration: 0.5s;
-  /* transition-property: background color; */
-  padding: 1em;
-  border-radius: 4px;
-  background-color: lightblue
-}
+  transition-property: border color; 
+  padding: 5px;
+  color: black;
+  border-bottom: 2px solid white;
+  }
 
-.month:hover {
-  color: white;
-  background-color: lightblue;
-}
+  .month:hover {
+    color: black;
+    border-bottom: 2px solid blue;
+  }
 
-li {
+  li {
   cursor: pointer;
+}
+
+.date-cards {
+  position: absolute;
+  top: 180px;
 }

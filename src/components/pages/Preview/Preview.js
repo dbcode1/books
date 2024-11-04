@@ -59,13 +59,10 @@ const Preview = () => {
     .catch((error) => {
       console.error("script not loading", error);
     });
-
-    console.log("ISBN", localStorage.getItem("ISBN"))
   return (
-    <div>
+    <div className="veiwer-wrapper">
       {" "}
-      <Link to="/best">Back</Link>
-      <div id="viewerCanvas" className="google-veiwer"></div>
+      <div id="viewerCanvas" style={{width: 600 + "px", margin: 0 +"auto"}} className="google-veiwer"></div>
     </div>
   );
 };

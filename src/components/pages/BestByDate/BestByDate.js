@@ -1,8 +1,10 @@
 import React, { useEffect, useContext } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { Context } from "../../../Context";
 import { format } from "date-fns";
+import { AnimatePresence, motion } from "framer-motion";
 import sub from "date-fns/sub";
+import uniqid from "uniqid";
 import differenceInMonths from "date-fns/differenceInMonths";
 import "./BestByDate.css";
 import { getData } from "../../../helpers/getData";
@@ -65,7 +67,11 @@ export function BestByDate() {
         {months.map((month, i) => {
           i++;
           return (
-            <Link className="month" activeClassName="active"  onClick={() => getByDate(i)}>
+            <Link
+              className="month"
+              activeClassName="active"
+              onClick={() => getByDate(i)}
+            >
               {month}
             </Link>
           );
@@ -74,7 +80,19 @@ export function BestByDate() {
       <ul className="results-ul horizontal">
         {data.results.length > 0
           ? data.results.map((book) => {
-              return <Card book={book}></Card>;
+              return (
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={uniqid()}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Card book={book}></Card>
+                  </motion.div>
+                </AnimatePresence>
+              );
             })
           : null}
       </ul>

@@ -49,15 +49,14 @@ const Book = (props) => {
   // get id then call for individual description
   const getPreview = async (id) => {
     localStorage.setItem("ISBN", ISBN);
-
-    navigate("/preview")
+    console.log("preview");
+    //navigate("/preview")
   };
 
   return (
     <>
-      
       <div className="modal-wrapper" id="modal">
-         <Modal
+        <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
@@ -69,15 +68,24 @@ const Book = (props) => {
           </button>
           <h3 className="modal-header">Description</h3>
           {data.showPreview ? <Preview></Preview> : null}
-        </Modal> 
+        </Modal>
       </div>
 
-      <li className="book">
-        <button className="open book-button" onClick={(e) => openModal(e, ISBN)}>
+      <div className="book">
+        <button
+          className="open book-button"
+          onClick={(e) => openModal(e, ISBN)}
+        >
           Description
         </button>
-        <img src={img} alt="book cover" key={uniqid()} className="bookCover"></img>
-      </li>
+        <img
+          src={img}
+          alt="book cover"
+          key={uniqid()}
+          className="bookCover"
+        ></img>
+      </div>
+      {data.showPreview ? <Preview></Preview> : null}
     </>
   );
 };

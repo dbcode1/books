@@ -1,0 +1,25 @@
+.library-book {
+    width: 199px;
+}
+.library-book-cover {
+    width: 200px;
+}
+.library-button {
+    width: 200px;
+    display: inline-block;
+    font-size: 14px;
+    background: none;
+    border: 1px solid lightgrey;
+    border-radius: 4px 4px 0 0;
+    border-bottom: none;
+    color: rgb(126, 123, 123);
+    background-color: rgb(251, 251, 251);
+    transition-property: color background-color;
+    transition-duration: 0.5s
+  }
+  
+  .library-button:hover {
+    color: white;
+    background-color: rgb(154, 92, 239);
+    
+  }
