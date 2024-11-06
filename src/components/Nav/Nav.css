@@ -15,7 +15,7 @@
   border: none;
   /* padding: 4em 0 0 0; */
   width: 100%;
-  height: 100px;
+  height: 100%;
   display: inline-block;
   transition: 0.75s;
   text-align: center;
@@ -25,9 +25,9 @@
 }
 
 .link {
-  display: block;
-  width: 100%;
-  height: 100%;
+  
+  width: 100px;
+  height: 100px;
   vertical-align: center;
   font-weight: 300;
   color: white;
@@ -35,6 +35,7 @@
 }
 a {
   transition: font-size 0.5s;
+  padding: 40px 75px;
 }
 a:hover {
   font-size: 14px;

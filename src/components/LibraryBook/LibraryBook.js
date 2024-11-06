@@ -5,7 +5,7 @@ import uniqid from "uniqid";
 import { getText } from "../../helpers/getData";
 import Modal from "react-modal";
 import Preview from "../pages/Preview/Preview";
-import "./LibraryBook.css"
+import "./LibraryBook.css";
 
 const customStyles = {
   content: {
@@ -36,23 +36,30 @@ const LibraryBook = (props) => {
     getPreview(title);
   }
 
-
   // get id then call for individual description
   const getPreview = async (id) => {
     localStorage.setItem("ISBN", ISBN);
-    console.log("preview")
-    navigate("/preview")
+    console.log("preview");
+    navigate("/preview");
   };
 
   return (
     <>
       <li className="library-book">
-        <button className="library-button" onClick={(e) => openPreview(e, ISBN)}>
-          Description
+        <button
+          className="library-button"
+          onClick={(e) => openPreview(e, ISBN)}
+        >
+          Preview
         </button>
-        <img src={img} alt="book cover" key={uniqid()} className="library-book-cover"></img>
+        <img
+          src={img}
+          alt="book cover"
+          key={uniqid()}
+          className="library-book-cover"
+        ></img>
       </li>
-      {data.showPreview ? <Preview></Preview>: null} 
+      {data.showPreview ? <Preview></Preview> : null}
     </>
   );
 };

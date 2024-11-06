@@ -67,7 +67,7 @@ const Book = (props) => {
             X
           </button>
           <h3 className="modal-header">Description</h3>
-          {data.showPreview ? <Preview></Preview> : null}
+          {/* {data.showPreview ? <Preview></Preview> : null} */}
         </Modal>
       </div>
 

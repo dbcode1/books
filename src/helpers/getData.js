@@ -4,7 +4,7 @@ import axios from "axios";
 export async function getData(url) {
   try {
     const response = await axios.get(url);
-    console.log(response)
+    console.log(response);
     const formatted = response.data.results.books;
     return formatted;
   } catch (error) {
@@ -15,11 +15,19 @@ export async function getData(url) {
 export async function getText(url) {
   try {
     const response = await axios.get(url);
-    console.log(response)
+    console.log(response);
     return response;
   } catch (error) {
     alert(error);
   }
+}
+
+export async function getSummary(title, data) {
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
+  const response = await getText(url);
+  const description = response.data.items[0].volumeInfo.description;
+  // setData({ ...data, description: description });
+  // move to each page after calling function
 }
 
 export async function getLibraryData(title) {

@@ -10,6 +10,7 @@ import "./BestByDate.css";
 import { getData } from "../../../helpers/getData";
 import Card from "../../Card/Card";
 import Results from "../.././Results/Results";
+import AnimatedLayout from "../../AnimatedLayout";
 
 export function BestByDate() {
   const { data, setData } = useContext(Context);
@@ -50,7 +51,7 @@ export function BestByDate() {
     const response = await getData(url);
     setData({ ...data, results: response });
   };
-  console.log(data.results);
+
   const date = new Date();
   let month = date.getMonth();
   const months = [];
@@ -61,41 +62,41 @@ export function BestByDate() {
     console.log(differenceInMonths(e.target.value, Date.now));
     console.log(e.target.value);
   };
+
   return (
     <Results>
-      <ul className="date-buttons horizontal" onChange={onChange}>
-        {months.map((month, i) => {
-          i++;
-          return (
-            <Link
-              className="month"
-              activeClassName="active"
-              onClick={() => getByDate(i)}
-            >
-              {month}
-            </Link>
-          );
-        })}
-      </ul>
-      <ul className="results-ul horizontal">
-        {data.results.length > 0
-          ? data.results.map((book) => {
-              return (
-                <AnimatePresence mode="popLayout">
-                  <motion.div
-                    key={uniqid()}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Card book={book}></Card>
-                  </motion.div>
-                </AnimatePresence>
-              );
-            })
-          : null}
-      </ul>
+      <AnimatedLayout>
+        <ul className="date-buttons horizontal" onChange={onChange}>
+          {months.map((month, i) => {
+            i++;
+            return (
+              <Link
+                className="month"
+                activeClassName="active"
+                onClick={() => getByDate(i)}
+              >
+                {month}
+              </Link>
+            );
+          })}
+        </ul>
+        <AnimatePresence mode="poplayout">
+          <motion.ul
+            key={uniqid()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="results-ul horizontal"
+          >
+            {data.results.length > 0
+              ? data.results.map((book) => {
+                  return <Card book={book}></Card>;
+                })
+              : null}
+          </motion.ul>
+        </AnimatePresence>
+      </AnimatedLayout>
     </Results>
   );
 }

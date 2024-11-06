@@ -22,10 +22,14 @@ const Nav = () => {
   return (
     <ul className="nav">
       <li>
-        <Item name="Home" path="/home">ITEM</Item>
+        <Item name="Home" path="/home">
+          ITEM
+        </Item>
       </li>
       <li>
-        <Item name="Current" path="/best">ITEM</Item>
+        <Item name="Current" path="/best">
+          ITEM
+        </Item>
       </li>
       <li>
         <Item name="Archive" path="/best-by-date"></Item>

@@ -7,9 +7,10 @@ import LibraryBook from "../../LibraryBook/LibraryBook";
 import Results from "../../Results/Results";
 import Preview from "../Preview/Preview";
 import library from "../../../helpers/books";
-import dummyData from "../../../helpers/dummy";
 import { getText, getData } from "../../../helpers/getData";
 import { libraryBooks } from "../../../helpers/books";
+import AnimatedLayout from "../../AnimatedLayout";
+
 import "./Library.css";
 
 const Library = () => {
@@ -31,10 +32,6 @@ const Library = () => {
 
   localStorage.setItem("library", JSON.stringify(books));
 
-  //get localStorage
-  // check contents
-  // if full save library to books
-  // if empty save to library and books
   console.log("BOOKS", books);
   const getBookInfo = async (title) => {
     // make a copy of state
@@ -75,14 +72,16 @@ const Library = () => {
 
   return (
     <Results>
-      <ul className="library-wrapper horizontal">
-        {books.length > 0 &&
-          books.map((book) => {
-            return (
-              <LibraryBook className="library-book" book={book}></LibraryBook>
-            );
-          })}
-      </ul>
+      <AnimatedLayout>
+        <ul className="library-wrapper horizontal">
+          {books.length > 0 &&
+            books.map((book) => {
+              return (
+                <LibraryBook className="library-book" book={book}></LibraryBook>
+              );
+            })}
+        </ul>
+      </AnimatedLayout>
     </Results>
   );
 };

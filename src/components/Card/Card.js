@@ -1,11 +1,10 @@
 import React, { useContext, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../../Context";
+import { ShowProvider } from "../../ModalContext";
+import { ShowContext } from "../../ModalContext";
 import uniqid from "uniqid";
 import { getText } from "../../helpers/getData";
 import Modal from "../Modal/Modal";
-import ReactDom from "react-dom";
-import { Transition } from "react-transition-group";
 
 import "./Card.css";
 
@@ -24,7 +23,7 @@ const customStyles = {
 
 const Card = (props) => {
   const navigate = useNavigate();
-  const { data, setData } = useContext(Context);
+  const { data, setShowData } = useContext(ShowContext);
 
   const img = props.book.book_image;
   const title = props.book.title;
@@ -34,25 +33,24 @@ const Card = (props) => {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
     const response = await getText(url);
     const description = response.data.items[0].volumeInfo.description;
-    setData({ ...data, description: description });
+    setShowData({ ...data, description: description });
   };
-  const [show, setShow] = useState(false);
 
   const open = () => {
     console.log("open");
-    setShow(true);
+    setShowData({ ...data, show: true });
     getSummary(title);
   };
 
   const closed = () => {
     console.log("close");
-    setShow(false);
+    setShowData({ ...data, show: false });
   };
 
   return (
     <>
       <main>
-        <Modal show={show} handleClose={closed}>
+        <Modal show={data.show} handleClose={closed}>
           <p> {data.description}</p>
         </Modal>
 
