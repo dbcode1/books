@@ -5,6 +5,7 @@ import { getData } from "../../../helpers/getData";
 import Card from "../.././Card/Card";
 import Results from "../.././Results/Results";
 import AnimatedLayout from "../../AnimatedLayout";
+import Arrow from "../../Arrow/Arrow";
 
 const Best = () => {
   const { data, setData } = useContext(Context);
@@ -20,34 +21,27 @@ const Best = () => {
     console.log(response);
     const newArr = data.results.slice();
     const newData = [...newArr, ...response];
-
-    //setData({ ...data, results: [...response] });
     setData({ ...data, results: [...newData] });
   };
 
   useEffect(() => {
     setData({ ...data, results: [] });
-
     getCurrent();
   }, []);
 
   return (
     <Results>
       <AnimatedLayout>
+        {/* <Arrow></Arrow> */}
         <ul className="results-ul horizontal">
           <li className="error fade">{data.error}</li>
           {data.results.map((book) => {
             return <Card book={book}>CARD</Card>;
           })}
-          {/* {data.results.length > 0
-          ? data.results.map((book) => {
-              return <Card book={book}></Card>;
-            })
-          : null} */}
         </ul>
       </AnimatedLayout>
     </Results>
   );
 };
 
-export default Best;
+export default React.memo(Best);

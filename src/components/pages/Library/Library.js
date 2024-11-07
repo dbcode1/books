@@ -10,6 +10,7 @@ import library from "../../../helpers/books";
 import { getText, getData } from "../../../helpers/getData";
 import { libraryBooks } from "../../../helpers/books";
 import AnimatedLayout from "../../AnimatedLayout";
+import Modal from "../Modal/Modal"
 
 import "./Library.css";
 

@@ -4,6 +4,7 @@ import { Context } from "../../Context";
 import uniqid from "uniqid";
 import { getText } from "../../helpers/getData";
 import Modal from "react-modal";
+import {Arrow} from "../Arrow/Arrow"
 import Preview from "../pages/Preview/Preview";
 
 import "./Book.css";

@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Preview.css";
 import { Context } from "../../../Context";
-import Book from '../../../components/Book/Book'
+import Modal from '../components/Modal/Modal'
 
 const Preview = () => {
   const navigate = useNavigate();
@@ -49,6 +49,7 @@ const Preview = () => {
           document.getElementById("viewerCanvas")
         );
         console.log(isbn)
+        // PUT INTO MODAL
         viewer.load(`ISBN:${isbn}`)
         // viewer.load("ISBN:9780307743657", notFound);
       }

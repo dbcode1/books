@@ -34,14 +34,14 @@ const Card = (props) => {
     const response = await getText(url);
     const description = response.data.items[0].volumeInfo.description;
     console.log(description);
-    setShowData({ description: description });
+    setShowData({ description: description, show: true });
     console.log(showData);
   };
 
   const open = () => {
     console.log("open");
-    setShowData({ show: true });
     getSummary(title);
+    // setShowData({ show: true });
   };
 
   const closed = () => {
