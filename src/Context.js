@@ -10,7 +10,7 @@ export const ContextProvider = ({ children }) => {
     // description: "",
     // show: false,
     ISBN: "",
-    title: "",
+    // title: "",
   };
 
   const [data, setData] = useState(state);

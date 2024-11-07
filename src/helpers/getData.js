@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // TODO: error handling with toastify or custom module
-export async function getData(url){
-  console.log("getData")
+export async function getData(url) {
+  console.log("getData");
   try {
     const response = await axios.get(url);
     console.log(response);
@@ -14,7 +14,7 @@ export async function getData(url){
 }
 
 export async function getText(url) {
-  console.log("getText")
+  console.log("getText");
   try {
     const response = await axios.get(url);
     console.log(response);
@@ -24,12 +24,11 @@ export async function getText(url) {
   }
 }
 
-export async function getSummary(title, data) {
+export async function getSummary(title, showData, setShowData) {
   const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
   const response = await getText(url);
   const description = response.data.items[0].volumeInfo.description;
-  return description
-  // setData({ ...data, description: description });
+  //setShowData({ ...showData, description: description });
   // move to each page after calling function
 }
 

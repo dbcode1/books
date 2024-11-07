@@ -33,14 +33,15 @@ const Card = (props) => {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
     const response = await getText(url);
     const description = response.data.items[0].volumeInfo.description;
-    setShowData({ ...showData, description: description });
+    console.log(description);
+    setShowData({ description: description });
+    console.log(showData);
   };
-  
-  
+
   const open = () => {
     console.log("open");
     setShowData({ show: true });
-    setTimeout(getSummary, 3000);
+    getSummary(title);
   };
 
   const closed = () => {

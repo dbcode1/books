@@ -2,10 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ContextProvider } from "./Context";
 import { Show } from "./ModalContext";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Error from "./components/Error/Error";
 import Preview from "./components/pages/Preview/Preview";

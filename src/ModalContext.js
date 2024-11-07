@@ -4,7 +4,8 @@ export const ShowContext = React.createContext();
 export const Show = ({ children }) => {
   const state = {
     show: false,
-    description: ""
+    description: "",
+    title: ""
   };
 
   const [showData, setShowData] = useState(state);
