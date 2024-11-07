@@ -7,10 +7,10 @@ export const Show = ({ children }) => {
     description: ""
   };
 
-  const [data, setShowData] = useState(state);
+  const [showData, setShowData] = useState(state);
 
   return (
-    <ShowContext.Provider value={{ data, setShowData}}>
+    <ShowContext.Provider value={{ showData, setShowData}}>
       {children}
     </ShowContext.Provider>
   );

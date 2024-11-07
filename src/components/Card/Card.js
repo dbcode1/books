@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShowProvider } from "../../ModalContext";
 import { ShowContext } from "../../ModalContext";
@@ -23,7 +23,7 @@ const customStyles = {
 
 const Card = (props) => {
   const navigate = useNavigate();
-  const { data, setShowData } = useContext(ShowContext);
+  const { showData, setShowData } = useContext(ShowContext);
 
   const img = props.book.book_image;
   const title = props.book.title;
@@ -33,25 +33,26 @@ const Card = (props) => {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
     const response = await getText(url);
     const description = response.data.items[0].volumeInfo.description;
-    setShowData({ ...data, description: description });
+    setShowData({ ...showData, description: description });
   };
-
+  
+  
   const open = () => {
     console.log("open");
-    setShowData({ ...data, show: true });
-    getSummary(title);
+    setShowData({ show: true });
+    setTimeout(getSummary, 3000);
   };
 
   const closed = () => {
     console.log("close");
-    setShowData({ ...data, show: false });
+    setShowData({ ...showData, show: false });
   };
 
   return (
     <>
       <main>
-        <Modal show={data.show} handleClose={closed}>
-          <p> {data.description}</p>
+        <Modal show={showData.show} handleClose={closed}>
+          <p> {showData.description}</p>
         </Modal>
 
         <button type="button" className="open" onClick={open}>

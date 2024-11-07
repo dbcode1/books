@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // TODO: error handling with toastify or custom module
-export async function getData(url) {
+export async function getData(url){
+  console.log("getData")
   try {
     const response = await axios.get(url);
     console.log(response);
@@ -13,6 +14,7 @@ export async function getData(url) {
 }
 
 export async function getText(url) {
+  console.log("getText")
   try {
     const response = await axios.get(url);
     console.log(response);
@@ -26,6 +28,7 @@ export async function getSummary(title, data) {
   const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
   const response = await getText(url);
   const description = response.data.items[0].volumeInfo.description;
+  return description
   // setData({ ...data, description: description });
   // move to each page after calling function
 }
@@ -34,3 +37,9 @@ export async function getLibraryData(title) {
   // get title
   const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
 }
+// export  async function getByDate(num) {
+//   const date = datePicker(num);
+//   const url = `https://api.nytimes.com/svc/books/v3/lists/${date}/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG`;
+//   const response = await getData(url);
+//   setData({ ...data, results: response });
+// };
