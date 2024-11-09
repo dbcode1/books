@@ -10,7 +10,6 @@ import library from "../../../helpers/books";
 import { getText, getData } from "../../../helpers/getData";
 import { libraryBooks } from "../../../helpers/books";
 import AnimatedLayout from "../../AnimatedLayout";
-import Modal from "../Modal/Modal"
 
 import "./Library.css";
 
@@ -78,7 +77,11 @@ const Library = () => {
           {books.length > 0 &&
             books.map((book) => {
               return (
-                <LibraryBook className="library-book" book={book}></LibraryBook>
+                <LibraryBook
+                  key={uniqid()}
+                  className="library-book"
+                  book={book}
+                ></LibraryBook>
               );
             })}
         </ul>

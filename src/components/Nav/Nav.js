@@ -21,7 +21,7 @@ const Nav = () => {
 
   return (
     <ul className="nav">
-      <li>
+      <li className="button">
         <Item name="Home" path="/home">
           ITEM
         </Item>

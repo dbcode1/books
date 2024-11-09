@@ -1,6 +1,5 @@
 import React, { useContext, useState, useRef, memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { ShowProvider } from "../../ModalContext";
 import { ShowContext } from "../../ModalContext";
 import uniqid from "uniqid";
 import { getText } from "../../helpers/getData";
@@ -39,7 +38,7 @@ const Card = (props) => {
   };
 
   const open = () => {
-    console.log("open");
+    console.log("open", showData.show);
     getSummary(title);
     // setShowData({ show: true });
   };
@@ -51,7 +50,7 @@ const Card = (props) => {
 
   return (
     <>
-      <main>
+      <ul>
         <Modal show={showData.show} handleClose={closed}>
           <p> {showData.description}</p>
         </Modal>
@@ -63,7 +62,7 @@ const Card = (props) => {
         <li className="card">
           <img src={img} alt="book cover" key={uniqid()}></img>
         </li>
-      </main>
+      </ul>
     </>
   );
 };
