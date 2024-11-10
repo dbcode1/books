@@ -21,22 +21,20 @@ const Library = () => {
   useEffect(() => {
     //getBookInfo()
     if (libraryBooks) {
-      console.log("library", libraryBooks);
       setBooks(...books, libraryBooks);
     } else {
       console.log("getbooks");
       getBookInfo();
-      console.log("librarybooks", books);
+      console.log("BOOKS", books)
     }
   }, []);
 
   localStorage.setItem("library", JSON.stringify(books));
 
-  console.log("BOOKS", books);
+  ;
   const getBookInfo = async (title) => {
     // make a copy of state
     const allBooks = [];
-    //setData({ ...data, results: []})
     // loop through titles
     const map = library.map(async (title) => {
       const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
