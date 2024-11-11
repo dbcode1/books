@@ -73,25 +73,26 @@ const LibraryBook = (props) => {
   };
 
   useEffect(() => {
-    const setupViewer = async () => {
-      try {
-        await loadScript("https://www.google.com/books/jsapi.js");
-        if (window.google && window.google.books) {
-          window.google.books.load();
-          window.google.books.setOnLoadCallback(initializeGoogleBooksViewer);
-        }
-      } catch (error) {
-        console.error("Error loading or initializing Google Books API", error);
-      }
-    };
-
-    setupViewer();
+    // setupViewer();
   }, []);
+
+  const setupViewer = async () => {
+    console.log("setupViewer");
+    try {
+      await loadScript("https://www.google.com/books/jsapi.js");
+      if (window.google && window.google.books) {
+        window.google.books.load();
+        window.google.books.setOnLoadCallback(initializeGoogleBooksViewer);
+      }
+    } catch (error) {
+      console.error("Error loading or initializing Google Books API", error);
+    }
+  };
 
   const openPreview = () => {
     console.log("Opening book preview modal");
     setShowData({ show: true, selectedBookId: ISBN });
-
+    setupViewer();
     setTimeout(() => {
       initializeGoogleBooksViewer();
     }, 300);
@@ -114,6 +115,7 @@ const LibraryBook = (props) => {
         </Modal>
       )}
       <ul>
+        
         <button className="library-button" onClick={openPreview}>
           Preview
         </button>

@@ -5,12 +5,11 @@ import uniqid from "uniqid";
 import Card from "../../Card/Card";
 import LibraryBook from "../../LibraryBook/LibraryBook";
 import Results from "../../Results/Results";
-import Preview from "../Preview/Preview";
+import Arrow from "../../Arrow/Arrow";
 import library from "../../../helpers/books";
 import { getText, getData } from "../../../helpers/getData";
-import { libraryBooks } from "../../../helpers/books";
 import AnimatedLayout from "../../AnimatedLayout";
-
+import { AnimatePresence, motion } from "framer-motion";
 import "./Library.css";
 
 const Library = () => {
@@ -19,25 +18,24 @@ const Library = () => {
   const libraryBooks = JSON.parse(localStorage.getItem("library"));
 
   useEffect(() => {
-    //getBookInfo()
+    //getBookInfo();
     if (libraryBooks) {
       setBooks(...books, libraryBooks);
     } else {
-      console.log("getbooks");
       getBookInfo();
-      console.log("BOOKS", books)
-    }
+      console.log("BOOKS", books);
+     }
   }, []);
-
   localStorage.setItem("library", JSON.stringify(books));
 
-  ;
   const getBookInfo = async (title) => {
+    console.log("get book info");
     // make a copy of state
     const allBooks = [];
     // loop through titles
     const map = library.map(async (title) => {
-      const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
+      
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=1&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
       const response = await getText(url);
       // format response
       const volume = response.data.items[0].volumeInfo;
@@ -57,32 +55,46 @@ const Library = () => {
       };
 
       // console.log("book obj ===", bookObj);
-      const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
-      if (filterBook.length) {
-        // same data found
-        console.log("filterBook ===", filterBook);
-      } else {
-        allBooks.push(bookObj);
-        setBooks([...books, ...allBooks]);
-      }
+      // const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
+      // if (filterBook.length) {
+      //   // same data found
+      //   console.log("filterBook ===", filterBook);
+      // } else {
+      //   allBooks.push(bookObj);
+      //   // setBooks([...books, ...allBooks]);
+      // }
+
+      allBooks.push(bookObj);
+      console.log("ALL", books);
+      setBooks([...books, ...allBooks]);
     });
   };
 
   return (
     <Results>
       <AnimatedLayout>
-        <ul className="library-wrapper horizontal">
-          {books.length > 0 &&
-            books.map((book) => {
-              return (
-                <LibraryBook
-                  key={uniqid()}
-                  className="library-book"
-                  book={book}
-                ></LibraryBook>
-              );
-            })}
-        </ul>
+        <AnimatePresence mode="poplayout">
+          <motion.ul
+            key={uniqid()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="results-ul horizontal"
+          >
+            <Arrow></Arrow>
+            {books.length > 0 &&
+              books.map((book) => {
+                return (
+                  <LibraryBook
+                    key={uniqid()}
+                    className="library-book"
+                    book={book}
+                  ></LibraryBook>
+                );
+              })}
+          </motion.ul>
+        </AnimatePresence>
       </AnimatedLayout>
     </Results>
   );

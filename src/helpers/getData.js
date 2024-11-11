@@ -17,8 +17,10 @@ export async function getText(url) {
   console.log("getText");
   try {
     const response = await axios.get(url);
-    console.log(response);
+    console.log(response)
     return response;
+
+    
   } catch (error) {
     alert(error);
   }
@@ -36,9 +38,3 @@ export async function getLibraryData(title) {
   // get title
   const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
 }
-// export  async function getByDate(num) {
-//   const date = datePicker(num);
-//   const url = `https://api.nytimes.com/svc/books/v3/lists/${date}/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG`;
-//   const response = await getData(url);
-//   setData({ ...data, results: response });
-// };

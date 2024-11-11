@@ -1,8 +1,11 @@
-.library-book {
+.library-book img {
     width: 199px;
+    display: inline-block;
+    margin: 0 40px 0 0;
 }
 .library-book-cover {
     width: 200px;
+
 }
 .library-button {
     width: 200px;
@@ -15,7 +18,8 @@
     color: rgb(126, 123, 123);
     background-color: rgb(251, 251, 251);
     transition-property: color background-color;
-    transition-duration: 0.5s
+    transition-duration: 0.5s;
+    cursor: pointer;
   }
   
   .library-button:hover {

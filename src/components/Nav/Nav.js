@@ -21,8 +21,8 @@ const Nav = () => {
 
   return (
     <ul className="nav">
-      <li className="button">
-        <Item name="Home" path="/home">
+      <li>
+        <Item className="nav-link"name="Home" path="/home">
           ITEM
         </Item>
       </li>

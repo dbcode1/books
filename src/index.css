@@ -20,6 +20,13 @@ body {
   padding: 0;
   overflow-y: hidden; 
 }
+
+p {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+}
 ul {
   list-style: none !important;
   margin: 0;
