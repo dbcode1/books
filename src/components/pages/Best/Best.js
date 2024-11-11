@@ -5,7 +5,6 @@ import { getData } from "../../../helpers/getData";
 import Card from "../.././Card/Card";
 import Results from "../.././Results/Results";
 import AnimatedLayout from "../../AnimatedLayout";
-import Arrow from "../../Arrow/Arrow";
 
 const Best = () => {
   const { data, setData } = useContext(Context);
@@ -33,7 +32,7 @@ const Best = () => {
     <Results>
       <AnimatedLayout>
         {/* <Arrow></Arrow> */}
-        <ul className="results-ul horizontal">
+        <ul className="results-ul">
           <li className="error fade">{data.error}</li>
           {data.results.map((book) => {
             return <Card book={book}>CARD</Card>;

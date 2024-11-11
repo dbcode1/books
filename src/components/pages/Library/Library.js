@@ -5,11 +5,12 @@ import uniqid from "uniqid";
 import Card from "../../Card/Card";
 import LibraryBook from "../../LibraryBook/LibraryBook";
 import Results from "../../Results/Results";
-import Arrow from "../../Arrow/Arrow";
+import Arrow from "../../Arrow/RightArrow";
 import library from "../../../helpers/books";
 import { getText, getData } from "../../../helpers/getData";
 import AnimatedLayout from "../../AnimatedLayout";
 import { AnimatePresence, motion } from "framer-motion";
+
 import "./Library.css";
 
 const Library = () => {
@@ -24,7 +25,7 @@ const Library = () => {
     } else {
       getBookInfo();
       console.log("BOOKS", books);
-     }
+    }
   }, []);
   localStorage.setItem("library", JSON.stringify(books));
 
@@ -34,7 +35,6 @@ const Library = () => {
     const allBooks = [];
     // loop through titles
     const map = library.map(async (title) => {
-      
       const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=1&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
       const response = await getText(url);
       // format response
@@ -55,18 +55,14 @@ const Library = () => {
       };
 
       // console.log("book obj ===", bookObj);
-      // const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
-      // if (filterBook.length) {
-      //   // same data found
-      //   console.log("filterBook ===", filterBook);
-      // } else {
-      //   allBooks.push(bookObj);
-      //   // setBooks([...books, ...allBooks]);
-      // }
-
-      allBooks.push(bookObj);
-      console.log("ALL", books);
-      setBooks([...books, ...allBooks]);
+      const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
+      if (filterBook.length) {
+        // same data found
+        console.log("filterBook ===", filterBook);
+      } else {
+        allBooks.push(bookObj);
+        setBooks([...books, ...allBooks]);
+      }
     });
   };
 
@@ -80,9 +76,8 @@ const Library = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="results-ul horizontal"
+            className="results-ul"
           >
-            <Arrow></Arrow>
             {books.length > 0 &&
               books.map((book) => {
                 return (

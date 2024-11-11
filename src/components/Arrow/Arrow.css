@@ -1,3 +1,6 @@
 .arrow{
     margin: 200px;
+    position: fixed;
+    top: 25%;
+    right: -200px;
 }

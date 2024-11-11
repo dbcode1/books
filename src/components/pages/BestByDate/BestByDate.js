@@ -87,7 +87,7 @@ export function BestByDate() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="results-ul horizontal"
+            className="results-ul"
           >
             {data.results.length > 0
               ? data.results.map((book) => {

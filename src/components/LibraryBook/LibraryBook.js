@@ -114,8 +114,7 @@ const LibraryBook = (props) => {
           ></div>
         </Modal>
       )}
-      <ul>
-        
+      <ul className="card-wrapper">
         <button className="library-button" onClick={openPreview}>
           Preview
         </button>

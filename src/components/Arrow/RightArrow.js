@@ -1,8 +1,14 @@
 import react from "react";
+import "./Arrow.css"
 
-export default function Arrow() {
+
+
+export default function RightArrow() {
+  const scrollRight = () => {
+    
+  }
   return (
-    <div className="arrow">
+    <div className="arrow" onClick={scrollRight}>
       <svg
         width="100px"
         height="100px"

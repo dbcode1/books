@@ -4,22 +4,20 @@
   font-size: 14px;
   position: fixed;
   top: 120px;
-  margin: 0 0 0 35px;
-  
+  margin: -20px 0 0 35px;
+  background-color: white;
 }
 
 
 .month{
   transition-duration: 0.5s;
   transition-property: border color; 
-  padding: 5px;
+  padding: 15px 5px;
   color: black;
-  border-bottom: 2px solid white;
   }
 
   .month:hover {
     color: black;
-    border-bottom: 2px solid blue;
   }
 
   li {

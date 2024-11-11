@@ -9,6 +9,7 @@
   align-items: center;
   height: 100px;
   background-color: rgb(18, 9, 12);
+  z-index: 100;
 }
 
 .nav li {
