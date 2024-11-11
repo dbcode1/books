@@ -69,8 +69,8 @@ table {
 }
 
 .title{
-  margin-top: 340px;
+  margin-top: 340px !important;
   text-align: center;
   font-size: 5em;
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
