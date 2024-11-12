@@ -24,46 +24,67 @@ const Library = () => {
       setBooks(...books, libraryBooks);
     } else {
       getBookInfo();
-      console.log("BOOKS", books);
     }
   }, []);
+
   localStorage.setItem("library", JSON.stringify(books));
+
+  const allBooks = [];
 
   const getBookInfo = async (title) => {
     console.log("get book info");
     // make a copy of state
-    const allBooks = [];
-    // loop through titles
+
     const map = library.map(async (title) => {
-      const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&maxResults=1&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
-      const response = await getText(url);
-      // format response
-      const volume = response.data.items[0].volumeInfo;
-      const author = volume.authors[0];
-      const img = volume.imageLinks.thumbnail;
-      if (!volume.industryIdentifiers) {
-        return;
-      }
-      const ISBN = volume.industryIdentifiers[0].identifier;
-      const description = volume.description;
+      const url = `https://www.googleapis.com/books/v1/volumes?&q=${title}&maxResults=1&fields=items/volumeInfo(description,industryIdentifiers,imageLinks(thumbnail))&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
 
-      const bookObj = {
-        author: author,
-        img: img,
-        ISBN: ISBN,
-        description: description,
-      };
+      const bookPromise = new Promise(function (resolve, reject) {
+        console.log("call api");
+        const call = fetch(url);
+        if (!call.ok) {
+          resolve(call);
+        }
+        reject(new Error("Error in fetching data"));
+        return Error;
+      });
 
-      // console.log("book obj ===", bookObj);
-      const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
-      if (filterBook.length) {
-        // same data found
-        console.log("filterBook ===", filterBook);
-      } else {
-        allBooks.push(bookObj);
-        setBooks([...books, ...allBooks]);
-      }
+      bookPromise
+        .then((results) => {
+          console.log("process data");
+          const jsonResults = results.json();
+          return jsonResults;
+        })
+        .then((response) => {
+          const volume = response.items[0].volumeInfo;
+          const img = volume.imageLinks.thumbnail;
+          if (!volume.industryIdentifiers) {
+            return;
+          }
+          console.log(volume);
+          const ISBN = volume.industryIdentifiers[0].identifier;
+          const description = volume.description;
+
+          const bookObj = {
+            img: img,
+            ISBN: ISBN,
+            description: description,
+          };
+
+          const filterBook = books.filter((b) => b.ISBN === bookObj.ISBN);
+          if (filterBook.length) {
+            // same data found
+            console.log("filterBook ===", filterBook);
+          } else {
+            console.log("setting book state");
+            allBooks.push(bookObj);
+            setBooks([...books, ...allBooks]);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     });
+    
   };
 
   return (

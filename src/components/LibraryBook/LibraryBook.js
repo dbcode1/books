@@ -73,7 +73,7 @@ const LibraryBook = (props) => {
   };
 
   useEffect(() => {
-    // setupViewer();
+    setupViewer();
   }, []);
 
   const setupViewer = async () => {

@@ -24,14 +24,13 @@ button.modal-open {
 .card {
   margin: 0 30px;
   height: 510px;
-  
+  z-index: 1;
 }
 
 .open {
   display: inline-block;
   margin: 0 auto;
   font-size: 14px;
-  /* margin: 0px 0 0 30px; */
   background: none;
   border: 1px solid lightgrey;
   border-bottom: none;

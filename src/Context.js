@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
     author: "",
     results: [],
     ISBN: "",
+    busy: true,
   };
 
   const [data, setData] = useState(state);

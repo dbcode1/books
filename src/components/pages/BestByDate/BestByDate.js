@@ -49,6 +49,7 @@ export function BestByDate() {
     const date = datePicker(num);
     const url = `https://api.nytimes.com/svc/books/v3/lists/${date}/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG`;
     const response = await getData(url);
+    console.log(response);
     setData({ ...data, results: response });
   };
 
