@@ -77,14 +77,13 @@ const Library = () => {
           } else {
             console.log("setting book state");
             allBooks.push(bookObj);
-            setBooks([...books, ...allBooks]);
+            allBooks.length == 27 && setBooks([...books, ...allBooks]);
           }
         })
         .catch((error) => {
           console.log(error);
         });
     });
-    
   };
 
   return (

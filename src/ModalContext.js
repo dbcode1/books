@@ -5,7 +5,8 @@ export const Show = ({ children }) => {
   const state = {
     show: false,
     description: "",
-    title: ""
+    title: "",
+    showButton: true
   };
 
   const [showData, setShowData] = useState(state);
