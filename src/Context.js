@@ -7,6 +7,7 @@ export const ContextProvider = ({ children }) => {
     error: "",
     author: "",
     results: [],
+    dateResults: [],
     ISBN: "",
     busy: true,
   };

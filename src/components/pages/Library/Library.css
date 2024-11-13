@@ -29,5 +29,9 @@
 
 .library-wrapper {
   min-height: 100vh;
-  
+}
+.library-layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }

@@ -9,6 +9,11 @@ import AnimatedLayout from "../../AnimatedLayout";
 const Best = () => {
   const { data, setData } = useContext(Context);
 
+  useEffect(() => {
+    
+    getCurrent();
+  }, []);
+
   const getCurrent = async () => {
     const url = `https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG&pages=1`;
     const response = await getData(url);
@@ -20,13 +25,8 @@ const Best = () => {
     console.log(response);
     const newArr = data.results.slice();
     const newData = [...newArr, ...response];
-    setData({ ...data, results: [...newData] });
+    setData({ results: [...newData] });
   };
-
-  useEffect(() => {
-    setData({ ...data, results: [] });
-    getCurrent();
-  }, []);
 
   return (
     <Results>

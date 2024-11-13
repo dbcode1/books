@@ -1,6 +1,7 @@
-import React, { useContext, useState, useRef, memo } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShowContext } from "../../ModalContext";
+import { Context } from "../../Context";
 import uniqid from "uniqid";
 import { getText } from "../../helpers/getData";
 import Modal from "../Modal/Modal";
@@ -23,9 +24,12 @@ const customStyles = {
 const Card = (props) => {
   const navigate = useNavigate();
   const { showData, setShowData } = useContext(ShowContext);
+  const { data, setData } = useContext(Context);
 
   const img = props.book.book_image;
   const title = props.book.title;
+
+  
 
   // get id then call for individual description
   const getSummary = async (title) => {

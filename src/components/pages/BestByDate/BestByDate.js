@@ -15,7 +15,7 @@ import AnimatedLayout from "../../AnimatedLayout";
 export function BestByDate() {
   const { data, setData } = useContext(Context);
   useEffect(() => {
-    setData({ ...data, results: [] });
+    // setData({ ...data, dateResults: [] });
   }, []);
 
   const monthNames = [
@@ -50,7 +50,7 @@ export function BestByDate() {
     const url = `https://api.nytimes.com/svc/books/v3/lists/${date}/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG`;
     const response = await getData(url);
     console.log(response);
-    setData({ ...data, results: response });
+    setData({ ...data, dateResults: response });
   };
 
   const date = new Date();
@@ -66,21 +66,21 @@ export function BestByDate() {
 
   return (
     <Results>
+      <ul className="date-buttons horizontal" onChange={onChange}>
+        {months.map((month, i) => {
+          i++;
+          return (
+            <Link
+              className="month"
+              activeClassName="active"
+              onClick={() => getByDate(i)}
+            >
+              {month}
+            </Link>
+          );
+        })}
+      </ul>
       <AnimatedLayout>
-        <ul className="date-buttons horizontal" onChange={onChange}>
-          {months.map((month, i) => {
-            i++;
-            return (
-              <Link
-                className="month"
-                activeClassName="active"
-                onClick={() => getByDate(i)}
-              >
-                {month}
-              </Link>
-            );
-          })}
-        </ul>
         <AnimatePresence mode="poplayout">
           <motion.ul
             key={uniqid()}
@@ -90,8 +90,8 @@ export function BestByDate() {
             transition={{ duration: 0.5 }}
             className="results-ul"
           >
-            {data.results.length > 0
-              ? data.results.map((book) => {
+            {data.dateResults.length > 0
+              ? data.dateResults.map((book) => {
                   return <Card book={book}></Card>;
                 })
               : null}

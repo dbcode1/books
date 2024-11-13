@@ -96,7 +96,7 @@ const Library = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="results-ul"
+            className="results-ul library-layout"
           >
             {books.length > 0 &&
               books.map((book) => {

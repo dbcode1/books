@@ -29,7 +29,7 @@ button.modal-open {
 
 .open {
   display: inline-block;
-  margin: 0 auto;
+  margin: 20px auto 0 auto;
   font-size: 14px;
   background: none;
   border: 1px solid lightgrey;
@@ -47,9 +47,11 @@ button.modal-open {
   
 }
 .close {
+  position: fixed;
+  top: 10px;
+  left: 5px;
   border: none;
   background-color: white;
   border-radius: 8px 0 0 0;
-  margin: 20px 0 0 2px;
   font-weight: bold;
 }
