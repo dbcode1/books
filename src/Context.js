@@ -8,18 +8,15 @@ export const ContextProvider = ({ children }) => {
     author: "",
     results: [],
     dateResults: [],
+    libraryResults: [],
     ISBN: "",
     busy: true,
   };
 
   const [data, setData] = useState(state);
 
-  const update = (data) => {
-    setData(data);
-  };
-
   return (
-    <Context.Provider value={{ data, setData, update }}>
+    <Context.Provider value={{ data, setData }}>
       {children}
     </Context.Provider>
   );

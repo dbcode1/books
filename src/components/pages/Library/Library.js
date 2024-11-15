@@ -16,18 +16,19 @@ import "./Library.css";
 const Library = () => {
   const { data, setData } = useContext(Context);
   const [books, setBooks] = useState([]);
-  const libraryBooks = JSON.parse(localStorage.getItem("library"));
+  // const libraryBooks = JSON.parse(localStorage.getItem("library"));
 
   useEffect(() => {
     //getBookInfo();
-    if (libraryBooks) {
-      setBooks(...books, libraryBooks);
-    } else {
+    // if (libraryBooks) {
+    //   console.log(libraryBooks)
+    //   setBooks(...books, libraryBooks);
+    // } else {
       getBookInfo();
-    }
+    // }
   }, []);
 
-  localStorage.setItem("library", JSON.stringify(books));
+  //localStorage.setItem("library", JSON.stringify(books));
 
   const allBooks = [];
 
@@ -60,7 +61,6 @@ const Library = () => {
           if (!volume.industryIdentifiers) {
             return;
           }
-          console.log(volume);
           const ISBN = volume.industryIdentifiers[0].identifier;
           const description = volume.description;
 

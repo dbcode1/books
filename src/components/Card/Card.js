@@ -29,8 +29,6 @@ const Card = (props) => {
   const img = props.book.book_image;
   const title = props.book.title;
 
-  
-
   // get id then call for individual description
   const getSummary = async (title) => {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${title}&key=${process.env.REACT_APP_GOOGLE_KEY}`;
@@ -53,21 +51,19 @@ const Card = (props) => {
   };
 
   return (
-    <>
-      <ul>
-        <Modal show={showData.show} handleClose={closed}>
-          <p> {showData.description}</p>
-        </Modal>
+    <ul className="card-list">
+      <Modal show={showData.show} handleClose={closed}>
+        <p> {showData.description}</p>
+      </Modal>
 
-        <button type="button" className="open" onClick={open}>
-          Description
-        </button>
+      <button type="button" className="open" onClick={open}>
+        Description
+      </button>
 
-        <li className="card">
-          <img src={img} alt="book cover" key={uniqid()}></img>
-        </li>
-      </ul>
-    </>
+      <li className="card">
+        <img src={img} alt="book cover" key={uniqid()}></img>
+      </li>
+    </ul>
   );
 };
 

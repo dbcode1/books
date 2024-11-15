@@ -10,7 +10,6 @@ const Best = () => {
   const { data, setData } = useContext(Context);
 
   useEffect(() => {
-    
     getCurrent();
   }, []);
 
@@ -32,12 +31,10 @@ const Best = () => {
     <Results>
       <AnimatedLayout>
         {/* <Arrow></Arrow> */}
-        <ul className="results-ul">
-          <li className="error fade">{data.error}</li>
-          {data.results.map((book) => {
-            return <Card book={book}>CARD</Card>;
-          })}
-        </ul>
+
+        {data.results.map((book) => {
+          return <Card book={book}>CARD</Card>;
+        })}
       </AnimatedLayout>
     </Results>
   );

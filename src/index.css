@@ -27,13 +27,6 @@ code {
   }
 }
 
-
-p {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  font-size: 18px;
-}
 ul {
   list-style: none !important;
   margin: 0;
@@ -46,7 +39,7 @@ ul {
   min-width: 100vw;
   padding: 0; 
   list-style: none !important;
-  margin-top: 60px;
+  margin-top: 8em;
   text-align: center;
 }
 a {
@@ -75,9 +68,3 @@ table {
   margin: 0;
 }
 
-.title{
-  margin-top: 340px !important;
-  text-align: center;
-  font-size: 5em;
-  vertical-align: middle !important;
-}

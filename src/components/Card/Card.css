@@ -21,15 +21,23 @@ button.modal-open {
   margin-left: 34%;
 }
 
+.card-list {
+  list-style: none;
+  text-align: center;
+  margin-top: 4em;
+}
 .card {
-  margin: 0 30px;
-  height: 510px;
+  width: 250px;
+  margin: 0 auto;
   z-index: 1;
+}
+.card img {
+  width: 100%;
 }
 
 .open {
   display: inline-block;
-  margin: 20px auto 0 auto;
+  margin: 0 auto;
   font-size: 14px;
   background: none;
   border: 1px solid lightgrey;
@@ -54,4 +62,20 @@ button.modal-open {
   background-color: white;
   border-radius: 8px 0 0 0;
   font-weight: bold;
+}
+
+@media only screen and (min-width: 25em) {
+  .card {
+    width: 300px;
+  }
+}
+@media only screen and (min-width: 28em) {
+  .card {
+    width: 350px;
+  }
+}
+@media only screen and (min-width: 31em) {
+  .card {
+    
+  }
 }

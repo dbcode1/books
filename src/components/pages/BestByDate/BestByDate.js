@@ -14,9 +14,6 @@ import AnimatedLayout from "../../AnimatedLayout";
 
 export function BestByDate() {
   const { data, setData } = useContext(Context);
-  useEffect(() => {
-    // setData({ ...data, dateResults: [] });
-  }, []);
 
   const monthNames = [
     "January",
@@ -90,11 +87,12 @@ export function BestByDate() {
             transition={{ duration: 0.5 }}
             className="results-ul"
           >
-            {data.dateResults.length > 0
-              ? data.dateResults.map((book) => {
-                  return <Card book={book}></Card>;
-                })
-              : null}
+        
+            {data.dateResults &&
+            data.dateResults.length > 0 &&
+              data.dateResults.map((book) => {
+                return <Card book={book}></Card>;
+              })}
           </motion.ul>
         </AnimatePresence>
       </AnimatedLayout>

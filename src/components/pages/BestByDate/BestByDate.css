@@ -1,14 +1,16 @@
 .date-buttons {
   list-style: none;
-  width: 90vw;
+  width: 100vw;
   font-size: 14px;
   position: fixed;
-  top: 120px;
-  margin: -20px 0 0 35px;
+  left: 0em;
+  top: 6.8em; 
   background-color: white;
   z-index: 100;
 }
-
+.date-buttons a {
+  font-size: 0.75em
+}
 
 .month{
   transition-duration: 0.5s;
@@ -25,7 +27,18 @@
   cursor: pointer;
 }
 
-.date-cards {
-  position: absolute;
-  top: 180px;
+@media screen and (min-width: 26.8em) {
+  .date-buttons {
+    margin: 0;
+    /* top: 7.15em; */
+  }
+  .date-buttons a {
+    font-size: 1.1em;
+  }
+}
+
+@media screen and (min-width: 26.875) {
+  .date-buttons a {
+    font-size: 26.875em;
+  }
 }
