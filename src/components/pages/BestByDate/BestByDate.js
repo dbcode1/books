@@ -28,33 +28,25 @@ export function BestByDate() {
   //   "March",
   //   "February",
   //   "January"
-    
+
   // ];
 
-  const monthNames = [
-    "1 month ago",
-    "6",
-    "5",
-    "4",
-    "3",
-    "2", 
-  ];
+  const monthNames = ["1 month ago", "6", "5", "4", "3", "2"];
 
-  
   // gets dates from previous months
   const datePicker = (num) => {
     const backDate = sub(Date.now(), { months: num });
     const date = format(new Date(backDate), "yyyy/MM/dd");
     const dateFormatted = date.replaceAll("/", "-");
-    console.log(dateFormatted)
+    console.log(dateFormatted);
     return dateFormatted;
   };
   const getByDate = async (num) => {
     const date = datePicker(num);
     const url = `https://api.nytimes.com/svc/books/v3/lists/${date}/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG`;
-   // const response = await getData(url);
-    //console.log(response);
-    //setData({ ...data, dateResults: response });
+    const response = await getData(url);
+    console.log(response);
+    setData({ ...data, dateResults: response });
   };
 
   const date = new Date();
@@ -70,7 +62,7 @@ export function BestByDate() {
     console.log(differenceInMonths(e.target.value, Date.now));
     console.log(e.target.value);
   };
-  
+
   return (
     <Results>
       <ul className="date-buttons horizontal" onChange={onChange}>
