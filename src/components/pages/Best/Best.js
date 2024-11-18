@@ -5,7 +5,6 @@ import { getData } from "../../../helpers/getData";
 import Card from "../.././Card/Card";
 import Results from "../.././Results/Results";
 import AnimatedLayout from "../../AnimatedLayout";
-
 const Best = () => {
   const { data, setData } = useContext(Context);
 
@@ -14,7 +13,8 @@ const Best = () => {
   }, []);
 
   const getCurrent = async () => {
-    const url = `https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=Qeyh0YahPtTSTYcC6BbEJJKdz9GhZBMG&pages=1`;
+    const url = `https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=${process.env.REACT_APP_BEST_KEY}&pages=1`;
+
     const response = await getData(url);
     if (response.message) {
       console.log(response.message);

@@ -1,5 +1,7 @@
 .date-buttons {
   list-style: none;
+  /* display: flex;
+  flex-direction: row-reverse; */
   width: 100vw;
   font-size: 14px;
   position: fixed;
@@ -13,6 +15,7 @@
 }
 
 .month{
+  
   transition-duration: 0.5s;
   transition-property: border color; 
   padding: 15px 5px;

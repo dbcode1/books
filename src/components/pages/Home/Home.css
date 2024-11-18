@@ -21,13 +21,12 @@ body::-webkit-scrollbar {
     text-align: center;   
   }
 
-p {
+.caption {
   padding: 0;
   margin: 0;
-  text-align: center;
   font-size: 1em;
   padding: 0 5px;
-  
+  text-align: center
 }
 /* @media only screen and (min-width: 28em) {
   p {

@@ -26,11 +26,11 @@ const Nav = () => {
 
   return (
     <ul className="nav">
-      <li>
+      {/* <li>
         <Item className="nav-link"name="Home" path="/home">
           ITEM
         </Item>
-      </li>
+      </li> */}
       <li>
         <Item name="Current" path="/best">
           ITEM

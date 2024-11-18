@@ -53,7 +53,7 @@ const Card = (props) => {
   return (
     <ul className="card-list">
       <Modal show={showData.show} handleClose={closed}>
-        <p> {showData.description}</p>
+        <p className="description"> {showData.description}</p>
       </Modal>
 
       <button type="button" className="open" onClick={open}>

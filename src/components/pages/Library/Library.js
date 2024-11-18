@@ -24,7 +24,7 @@ const Library = () => {
     //   console.log(libraryBooks)
     //   setBooks(...books, libraryBooks);
     // } else {
-      getBookInfo();
+    getBookInfo();
     // }
   }, []);
 
@@ -37,7 +37,7 @@ const Library = () => {
     // make a copy of state
 
     const map = library.map(async (title) => {
-      const url = `https://www.googleapis.com/books/v1/volumes?&q=${title}&maxResults=1&fields=items/volumeInfo(description,industryIdentifiers,imageLinks(thumbnail))&key=AIzaSyCa-pStkt7RVsldVNOZ0s1gZy2GdKNspcs`;
+      const url = `https://www.googleapis.com/books/v1/volumes?&q=${title}&maxResults=1&fields=items/volumeInfo(description,industryIdentifiers,imageLinks(thumbnail))&key=${process.env.REACT_APP_GOOGLE_KEY}`;
 
       const bookPromise = new Promise(function (resolve, reject) {
         console.log("call api");

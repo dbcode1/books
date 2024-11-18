@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState, createContext, useContext } from "react";
 import Root from "./components/Root/Root";
+require("dotenv").config();
 
 function App() {
   const context = createContext();

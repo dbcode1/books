@@ -35,6 +35,12 @@ button.modal-open {
   width: 100%;
 }
 
+.description {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 3em;
+}
+
 .open {
   display: inline-block;
   margin: 0 auto;

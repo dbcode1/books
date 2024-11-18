@@ -8,7 +8,7 @@ const Home = (props) => {
     <div className="home-wrapper">
       <AnimatedLayout>
         <h1 className="title">NY Times Best Sellers</h1>
-        <p>
+        <p className="caption">
           Checkout a new book, get book descriptions and preview whole books.
         </p>
       </AnimatedLayout>
