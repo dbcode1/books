@@ -57,6 +57,9 @@ const Library = () => {
         })
         .then((response) => {
           const volume = response.items[0].volumeInfo;
+          if (!volume) {
+            return;
+          }
           const img = volume.imageLinks.thumbnail;
           if (!volume.industryIdentifiers) {
             return;
@@ -77,7 +80,7 @@ const Library = () => {
           } else {
             console.log("setting book state");
             allBooks.push(bookObj);
-            allBooks.length == 27 && setBooks([...books, ...allBooks]);
+            setBooks([...books, ...allBooks]);
           }
         })
         .catch((error) => {
@@ -85,7 +88,7 @@ const Library = () => {
         });
     });
   };
-
+  console.log(books);
   return (
     <Results>
       <AnimatedLayout>

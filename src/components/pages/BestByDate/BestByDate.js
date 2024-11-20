@@ -15,22 +15,6 @@ import AnimatedLayout from "../../AnimatedLayout";
 export function BestByDate() {
   const { data, setData } = useContext(Context);
 
-  // const monthNames = [
-  //   "December",
-  //   "November",
-  //   "October",
-  //   "September",
-  //   "August",
-  //   "July",
-  //   "June",
-  //   "May",
-  //   "April",
-  //   "March",
-  //   "February",
-  //   "January"
-
-  // ];
-
   const monthNames = ["1 month ago", "6", "5", "4", "3", "2"];
 
   // gets dates from previous months
