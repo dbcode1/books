@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 export const Context = React.createContext();
 export const ContextProvider = ({ children }) => {
   const state = {
-    loading: false,
+    loading: true,
     error: "",
     author: "",
     results: [],
@@ -16,8 +16,6 @@ export const ContextProvider = ({ children }) => {
   const [data, setData] = useState(state);
 
   return (
-    <Context.Provider value={{ data, setData }}>
-      {children}
-    </Context.Provider>
+    <Context.Provider value={{ data, setData }}>{children}</Context.Provider>
   );
 };

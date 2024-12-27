@@ -10,22 +10,19 @@ import library from "../../../helpers/books";
 import { getText, getData } from "../../../helpers/getData";
 import AnimatedLayout from "../../AnimatedLayout";
 import { AnimatePresence, motion } from "framer-motion";
+import { Grid } from "react-loader-spinner";
 
 import "./Library.css";
 
 const Library = () => {
   const { data, setData } = useContext(Context);
+
   const [books, setBooks] = useState([]);
   // const libraryBooks = JSON.parse(localStorage.getItem("library"));
 
   useEffect(() => {
-    //getBookInfo();
-    // if (libraryBooks) {
-    //   console.log(libraryBooks)
-    //   setBooks(...books, libraryBooks);
-    // } else {
+    console.log("LOAD");
     getBookInfo();
-    // }
   }, []);
 
   //localStorage.setItem("library", JSON.stringify(books));
@@ -81,6 +78,7 @@ const Library = () => {
             console.log("setting book state");
             allBooks.push(bookObj);
             setBooks([...books, ...allBooks]);
+            setData({ ...data, loading: false });
           }
         })
         .catch((error) => {
@@ -91,7 +89,8 @@ const Library = () => {
   console.log(books);
   return (
     <Results>
-      <AnimatedLayout>
+      <div className="results-ul library-layout">
+        {/* <AnimatedLayout>
         <AnimatePresence mode="poplayout">
           <motion.ul
             key={uniqid()}
@@ -100,20 +99,33 @@ const Library = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             className="results-ul library-layout"
-          >
-            {books.length > 0 &&
-              books.map((book) => {
-                return (
-                  <LibraryBook
-                    key={uniqid()}
-                    className="library-book"
-                    book={book}
-                  ></LibraryBook>
-                );
-              })}
-          </motion.ul>
+          > */}
+        {data.loading && (
+          <Grid
+            visible={true}
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="grid-loading"
+            radius="12.5"
+            wrapperStyle={{}}
+            wrapperClass="grid-wrapper"
+          />
+        )}
+        {books.length > 0 &&
+          books.map((book) => {
+            return (
+              <LibraryBook
+                key={uniqid()}
+                className="library-book"
+                book={book}
+              ></LibraryBook>
+            );
+          })}
+        {/* </motion.ul>
         </AnimatePresence>
-      </AnimatedLayout>
+      </AnimatedLayout> */}
+      </div>
     </Results>
   );
 };

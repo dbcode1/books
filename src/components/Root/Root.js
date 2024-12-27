@@ -11,7 +11,7 @@ const Root = () => {
   return (
     <div>
       <Nav></Nav>
-      <AnimatedOutlet />
+      <Outlet />
     </div>
   );
 };

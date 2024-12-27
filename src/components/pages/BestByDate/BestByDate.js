@@ -11,6 +11,7 @@ import { getData } from "../../../helpers/getData";
 import Card from "../../Card/Card";
 import Results from "../.././Results/Results";
 import AnimatedLayout from "../../AnimatedLayout";
+import { Audio } from "react-loader-spinner";
 
 export function BestByDate() {
   const { data, setData } = useContext(Context);
@@ -20,6 +21,7 @@ export function BestByDate() {
   // gets dates from previous months
   const datePicker = (num) => {
     const backDate = sub(Date.now(), { months: num });
+    console.log(backDate);
     const date = format(new Date(backDate), "yyyy/MM/dd");
     const dateFormatted = date.replaceAll("/", "-");
     console.log(dateFormatted);
@@ -39,7 +41,6 @@ export function BestByDate() {
   const months = [];
   for (let i = 7; i > 1; i--) {
     months.push(monthNames[(month + i) % monthNames.length]);
-    console.log(monthNames);
   }
   console.log(months);
   const onChange = (e) => {
@@ -49,6 +50,17 @@ export function BestByDate() {
 
   return (
     <Results>
+      {data.loading && (
+        <Audio
+          height="80"
+          width="80"
+          radius="9"
+          color="green"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+      )}
       <ul className="date-buttons horizontal" onChange={onChange}>
         {months.map((month, i) => {
           i++;

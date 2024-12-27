@@ -4,7 +4,7 @@ import { Context } from "../../Context";
 import uniqid from "uniqid";
 import { getText } from "../../helpers/getData";
 import Modal from "react-modal";
-import {Arrow} from "../Arrow/Arrow"
+import { Arrow } from "../Arrow/Arrow";
 import Preview from "../pages/Preview/Preview";
 
 import "./Book.css";
@@ -42,8 +42,7 @@ const Book = (props) => {
   }
 
   function closeModal() {
-    setData({ ...data, description: "" });
-    setData({ ...data, showPreview: false });
+    setData({ ...data, description: "", showPreview: false });
     setIsOpen(false);
   }
 
