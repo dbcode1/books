@@ -8,8 +8,8 @@ const AnimatedLayout = ({ children }) => {
   return (
     <motion.div
       key={uniqid()}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >

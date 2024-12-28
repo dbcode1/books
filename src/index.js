@@ -4,8 +4,9 @@ import { ContextProvider } from "./Context";
 import { Show } from "./ModalContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Error from "./components/Error/Error";
-import Best from "./components/pages/Best/Best";
+import { AnimatePresence, motion } from "framer-motion";
+
+import Best from "./components/pages/Best/Best"
 import Library from "./components/pages/Library/Library";
 import { BestByDate } from "./components/pages/BestByDate/BestByDate";
 import Root from "./components//Root/Root";
@@ -42,7 +43,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
     <Show>
-      <RouterProvider router={router} />
+      <AnimatePresence mode="wait" initial={true}>
+        <RouterProvider router={router} />
+      </AnimatePresence>
     </Show>
   </ContextProvider>
 );

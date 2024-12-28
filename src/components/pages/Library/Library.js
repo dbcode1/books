@@ -8,7 +8,6 @@ import Results from "../../Results/Results";
 import Arrow from "../../Arrow/RightArrow";
 import library from "../../../helpers/books";
 import { getText, getData } from "../../../helpers/getData";
-import AnimatedLayout from "../../AnimatedLayout";
 import { AnimatePresence, motion } from "framer-motion";
 import { Grid } from "react-loader-spinner";
 
@@ -89,17 +88,15 @@ const Library = () => {
   console.log(books);
   return (
     <Results>
-      <div className="results-ul library-layout">
-        {/* <AnimatedLayout>
-        <AnimatePresence mode="poplayout">
-          <motion.ul
-            key={uniqid()}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="results-ul library-layout"
-          > */}
+      {/* <AnimatePresence mode="poplayout"> */}
+      <motion.ul
+        key={uniqid()}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.85 }}
+        className="results-ul library-layout"
+      >
         {data.loading && (
           <Grid
             visible={true}
@@ -112,6 +109,7 @@ const Library = () => {
             wrapperClass="grid-wrapper"
           />
         )}
+        
         {books.length > 0 &&
           books.map((book) => {
             return (
@@ -122,10 +120,8 @@ const Library = () => {
               ></LibraryBook>
             );
           })}
-        {/* </motion.ul>
-        </AnimatePresence>
-      </AnimatedLayout> */}
-      </div>
+      </motion.ul>
+      {/* </AnimatePresence> */}
     </Results>
   );
 };

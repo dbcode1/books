@@ -1,18 +1,19 @@
 import React, { useEffect, useContext } from "react";
 import { Context } from "../../../Context";
+import { useLocation } from "react-router-dom";
 import "./Best.css";
 import { getData } from "../../../helpers/getData";
 import Card from "../.././Card/Card";
 import Results from "../.././Results/Results";
-import AnimatedLayout from "../../AnimatedLayout";
 import { Grid } from "react-loader-spinner";
 import uniqid from "uniqid";
 import { div } from "framer-motion/client";
 import { motion, AnimatePresence } from "framer-motion";
+import transition from "../../Transition/Transition";
 
 const Best = () => {
   const { data, setData } = useContext(Context);
-
+  const { pathname } = useLocation();
   useEffect(() => {
     getCurrent();
     console.log("LOAD");
@@ -37,15 +38,6 @@ const Best = () => {
 
   return (
     <Results>
-      {/* <AnimatePresence mode="wait" initial={true}>
-        <motion.div
-          key={uniqid()}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        > */}
-      {/* <AnimatedLayout> */}
       {data.loading && (
         <Grid
           visible={true}
@@ -58,16 +50,22 @@ const Best = () => {
           wrapperClass="grid-wrapper"
         />
       )}
-
-      {data.results.map((book) => {
-        return <Card book={book}>CARD</Card>;
-      })}
-
-      {/* </AnimatedLayout> */}
-      {/* </motion.div>
-      </AnimatePresence> */}
+      {/* <AnimatePresence mode="wait" initial={true}> */}
+      <motion.div
+        // this fixed animation blinking
+        key={pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.85 }}
+      >
+        {data.results.map((book) => {
+          return <Card book={book}>CARD</Card>;
+        })}
+      </motion.div>
+      {/* </AnimatePresence> */}
     </Results>
   );
 };
 
-export default React.memo(Best);
+export default Best;

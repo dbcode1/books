@@ -1,13 +1,11 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { useLocation, NavLink } from "react-router-dom";
 import "./Nav.css";
 import { Context } from "../../Context";
 
-
 const Nav = () => {
   const { data, setData } = useContext(Context);
-  
-  
+
   function Item({ name, path }) {
     return (
       <NavLink
@@ -15,6 +13,7 @@ const Nav = () => {
           isPending ? "link pending" : isActive ? "link active" : ""
         }
         to={path}
+        viewTransition
       >
         {name}
       </NavLink>
@@ -32,12 +31,12 @@ const Nav = () => {
         </Item>
       </li> */}
       <li>
-        <Item name="Current" path="/best">
+        <Item name="Current" path="/best" viewTransition>
           ITEM
         </Item>
       </li>
       <li>
-        <Item name="Archive" path="/best-by-date"></Item>
+        <Item name="Archive" path="/best-by-date" viewTransition></Item>
       </li>
       <li>
         <Item name="Library" path="/library"></Item>

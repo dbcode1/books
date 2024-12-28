@@ -10,13 +10,27 @@ import "./BestByDate.css";
 import { getData } from "../../../helpers/getData";
 import Card from "../../Card/Card";
 import Results from "../.././Results/Results";
-import AnimatedLayout from "../../AnimatedLayout";
 import { Audio } from "react-loader-spinner";
 
 export function BestByDate() {
   const { data, setData } = useContext(Context);
 
-  const monthNames = ["1 month ago", "6", "5", "4", "3", "2"];
+  // const monthNames = [
+  //   "Jan",
+  //   "Feb",
+  //   "Mar",
+  //   "Apr",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "Aug",
+  //   "Sept",
+  //   "Oct",
+  //   "Nov",
+  //   "Dec",
+  // ];
+
+  const monthNames = ["1 month ago", 2, 3, 4, 5, 6];
 
   // gets dates from previous months
   const datePicker = (num) => {
@@ -35,14 +49,6 @@ export function BestByDate() {
     setData({ ...data, dateResults: response });
   };
 
-  const date = new Date();
-  let month = date.getMonth() + 1;
-
-  const months = [];
-  for (let i = 7; i > 1; i--) {
-    months.push(monthNames[(month + i) % monthNames.length]);
-  }
-  console.log(months);
   const onChange = (e) => {
     console.log(differenceInMonths(e.target.value, Date.now));
     console.log(e.target.value);
@@ -62,7 +68,7 @@ export function BestByDate() {
         />
       )}
       <ul className="date-buttons horizontal" onChange={onChange}>
-        {months.map((month, i) => {
+        {monthNames.map((month, i) => {
           i++;
           return (
             <Link
@@ -75,24 +81,29 @@ export function BestByDate() {
           );
         })}
       </ul>
-      <AnimatedLayout>
-        <AnimatePresence mode="poplayout">
-          <motion.ul
-            key={uniqid()}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="results-ul"
-          >
-            {data.dateResults &&
-              data.dateResults.length > 0 &&
-              data.dateResults.map((book) => {
-                return <Card book={book}></Card>;
-              })}
-          </motion.ul>
-        </AnimatePresence>
-      </AnimatedLayout>
+      <motion.ul
+        key={uniqid()}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.85 }}
+        className="results-ul"
+      >
+        <motion.ul
+          key={uniqid()}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.85, ease: "easeInOut" }}
+          className="results-ul"
+        >
+          {data.dateResults &&
+            data.dateResults.length > 0 &&
+            data.dateResults.map((book) => {
+              return <Card book={book}></Card>;
+            })}
+        </motion.ul>
+      </motion.ul>
     </Results>
   );
 }

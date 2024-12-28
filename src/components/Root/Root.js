@@ -1,9 +1,9 @@
 import React, { memo } from "react";
-import { motion } from "framer-motion";
 import { Outlet, useLocation } from "react-router-dom";
 import "./Root.css";
 import Nav from "../Nav/Nav";
-import AnimatedOutlet from "../AnimatedOutlet";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { Show } from "../../ModalContext";
 
 const Root = () => {
@@ -11,6 +11,9 @@ const Root = () => {
   return (
     <div>
       <Nav></Nav>
+      {/* <AnimatePresence mode="wait">
+        <Outlet location={location} key={location.pathname} />
+      </AnimatePresence> */}
       <Outlet />
     </div>
   );
