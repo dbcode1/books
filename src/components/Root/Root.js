@@ -11,7 +11,7 @@ const Root = () => {
   return (
     <div>
       <Nav></Nav>
-      {/* <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait" initial={true}>
         <Outlet location={location} key={location.pathname} />
       </AnimatePresence> */}
       <Outlet />

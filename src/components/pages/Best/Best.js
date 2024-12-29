@@ -13,7 +13,8 @@ import transition from "../../Transition/Transition";
 
 const Best = () => {
   const { data, setData } = useContext(Context);
-  const { pathname } = useLocation();
+  const  location  = useLocation();
+
   useEffect(() => {
     getCurrent();
     console.log("LOAD");
@@ -38,7 +39,7 @@ const Best = () => {
 
   return (
     <Results>
-      {data.loading && (
+      {/* {data.loading && (
         <Grid
           visible={true}
           height="80"
@@ -49,21 +50,24 @@ const Best = () => {
           wrapperStyle={{}}
           wrapperClass="grid-wrapper"
         />
-      )}
-      {/* <AnimatePresence mode="wait" initial={true}> */}
-      <motion.div
-        // this fixed animation blinking
-        key={pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.85 }}
-      >
-        {data.results.map((book) => {
-          return <Card book={book}>CARD</Card>;
-        })}
-      </motion.div>
-      {/* </AnimatePresence> */}
+      )} */}
+      <AnimatePresence mode="wait" initial={true}>
+        <motion.div
+          key={uniqid()}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.85 }}
+        >
+          {data.results.map((book) => {
+            return (
+              <Card location={location} key={location.pathname} book={book}>
+                CARD
+              </Card>
+            );
+          })}
+        </motion.div>
+      </AnimatePresence>
     </Results>
   );
 };

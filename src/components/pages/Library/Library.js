@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Context } from "../../../Context";
 import axios from "axios";
 import uniqid from "uniqid";
@@ -15,13 +16,14 @@ import "./Library.css";
 
 const Library = () => {
   const { data, setData } = useContext(Context);
+  const location = useLocation();
 
   const [books, setBooks] = useState([]);
   // const libraryBooks = JSON.parse(localStorage.getItem("library"));
 
   useEffect(() => {
-    console.log("LOAD");
-    getBookInfo();
+    setTimeout(getBookInfo, 300);
+    // getBookInfo();
   }, []);
 
   //localStorage.setItem("library", JSON.stringify(books));
@@ -32,7 +34,9 @@ const Library = () => {
     console.log("get book info");
     // make a copy of state
 
+    library.map((item) => console.log(item));
     const map = library.map(async (title) => {
+      console.log(title);
       const url = `https://www.googleapis.com/books/v1/volumes?&q=${title}&maxResults=1&fields=items/volumeInfo(description,industryIdentifiers,imageLinks(thumbnail))&key=${process.env.REACT_APP_GOOGLE_KEY}`;
 
       const bookPromise = new Promise(function (resolve, reject) {
@@ -77,7 +81,7 @@ const Library = () => {
             console.log("setting book state");
             allBooks.push(bookObj);
             setBooks([...books, ...allBooks]);
-            setData({ ...data, loading: false });
+            setData({...data, loading: false})
           }
         })
         .catch((error) => {
@@ -88,40 +92,41 @@ const Library = () => {
   console.log(books);
   return (
     <Results>
-      {/* <AnimatePresence mode="poplayout"> */}
-      <motion.ul
-        key={uniqid()}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.85 }}
-        className="results-ul library-layout"
-      >
-        {data.loading && (
-          <Grid
-            visible={true}
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="grid-loading"
-            radius="12.5"
-            wrapperStyle={{}}
-            wrapperClass="grid-wrapper"
-          />
-        )}
-        
-        {books.length > 0 &&
-          books.map((book) => {
-            return (
-              <LibraryBook
-                key={uniqid()}
-                className="library-book"
-                book={book}
-              ></LibraryBook>
-            );
-          })}
-      </motion.ul>
-      {/* </AnimatePresence> */}
+      {data.loading && (
+        <Grid
+          visible={true}
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="grid-loading"
+          radius="12.5"
+          wrapperStyle={{}}
+          wrapperClass="grid-wrapper"
+        />
+      )}
+      <AnimatePresence mode="wait" initial={true}>
+        <motion.div
+          key={uniqid()}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.85 }}
+          className="results-ul library-layout"
+        >
+          {books.length > 0 &&
+            books.map((book) => {
+              return (
+                <LibraryBook
+                  location={location}
+                  key={location.pathname}
+                  // key={uniqid()}
+                  className="library-book"
+                  book={book}
+                ></LibraryBook>
+              );
+            })}
+        </motion.div>
+      </AnimatePresence>
     </Results>
   );
 };

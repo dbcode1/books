@@ -47,7 +47,8 @@ const Card = (props) => {
 
   const closed = () => {
     console.log("close");
-    setShowData({ ...showData, show: false });
+    setShowData({ ...showData, description: "", show: false });
+    
   };
 
   return (

@@ -43,9 +43,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextProvider>
     <Show>
-      <AnimatePresence mode="wait" initial={true}>
+      {/* <AnimatePresence mode="wait" initial={true}> */}
         <RouterProvider router={router} />
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
     </Show>
   </ContextProvider>
 );
