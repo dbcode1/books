@@ -22,8 +22,8 @@ const Library = () => {
   // const libraryBooks = JSON.parse(localStorage.getItem("library"));
 
   useEffect(() => {
-    setTimeout(getBookInfo, 300);
-    // getBookInfo();
+    //setTimeout(getBookInfo, 300);
+     getBookInfo();
   }, []);
 
   //localStorage.setItem("library", JSON.stringify(books));
@@ -110,7 +110,7 @@ const Library = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.85 }}
+          transition={{ duration: 0.5 }}
           className="results-ul library-layout"
         >
           {books.length > 0 &&

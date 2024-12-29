@@ -1,4 +1,8 @@
 import React, { useEffect, useContext } from "react";
+
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useRef } from "react";
+
 import { Context } from "../../../Context";
 import { useLocation } from "react-router-dom";
 import "./Best.css";
@@ -11,10 +15,24 @@ import { div } from "framer-motion/client";
 import { motion, AnimatePresence } from "framer-motion";
 import transition from "../../Transition/Transition";
 
-const Best = () => {
-  const { data, setData } = useContext(Context);
-  const  location  = useLocation();
+// animation
+const duration = 300;
 
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+};
+
+const transitionStyles = {
+  entering: { opacity: 1 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 },
+};
+
+const Best = ({ in: inProp }) => {
+  const { data, setData } = useContext(Context);
+  const location = useLocation();
   useEffect(() => {
     getCurrent();
     console.log("LOAD");
@@ -39,7 +57,7 @@ const Best = () => {
 
   return (
     <Results>
-      {/* {data.loading && (
+      {data.loading && (
         <Grid
           visible={true}
           height="80"
@@ -50,23 +68,33 @@ const Best = () => {
           wrapperStyle={{}}
           wrapperClass="grid-wrapper"
         />
-      )} */}
+      )}
       <AnimatePresence mode="wait" initial={true}>
-        <motion.div
-          key={uniqid()}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.85 }}
-        >
-          {data.results.map((book) => {
-            return (
-              <Card location={location} key={location.pathname} book={book}>
-                CARD
-              </Card>
-            );
-          })}
-        </motion.div>
+        {/* <TransitionGroup> */}
+        {data.results.map((book, nodeRef) => {
+          return (
+            // <CSSTransition
+            //   key={uniqid()}
+            //   nodeRef={nodeRef}
+            //   timeout={500}
+            //   classNames="item"
+            // >
+            <motion.div
+              // fix
+              location={location}
+              key={location.pathname}
+              //
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Card book={book}></Card>
+            </motion.div>
+            // </CSSTransition>
+          );
+        })}
+        {/* </TransitionGroup> */}
       </AnimatePresence>
     </Results>
   );
