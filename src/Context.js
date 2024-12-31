@@ -11,6 +11,7 @@ export const ContextProvider = ({ children }) => {
     libraryResults: [],
     ISBN: "",
     busy: true,
+    books: [],
   };
 
   const [data, setData] = useState(state);

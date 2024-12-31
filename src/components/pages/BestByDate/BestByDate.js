@@ -72,6 +72,7 @@ export function BestByDate() {
           i++;
           return (
             <Link
+              key={uniqid()}
               className="month"
               activeClassName="active"
               onClick={() => getByDate(i)}
@@ -86,23 +87,14 @@ export function BestByDate() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         className="results-ul"
       >
-        <motion.ul
-          key={uniqid()}
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.85, ease: "easeInOut" }}
-          className="results-ul"
-        >
-          {data.dateResults &&
-            data.dateResults.length > 0 &&
-            data.dateResults.map((book) => {
-              return <Card book={book}></Card>;
-            })}
-        </motion.ul>
+        {data.dateResults &&
+          data.dateResults.length > 0 &&
+          data.dateResults.map((book) => {
+            return <Card key={uniqid()} book={book}></Card>;
+          })}
       </motion.ul>
     </Results>
   );

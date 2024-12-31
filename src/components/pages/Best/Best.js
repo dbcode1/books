@@ -13,22 +13,6 @@ import { Grid } from "react-loader-spinner";
 import uniqid from "uniqid";
 import { div } from "framer-motion/client";
 import { motion, AnimatePresence } from "framer-motion";
-import transition from "../../Transition/Transition";
-
-// animation
-const duration = 300;
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
-};
-
-const transitionStyles = {
-  entering: { opacity: 1 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 },
-};
 
 const Best = ({ in: inProp }) => {
   const { data, setData } = useContext(Context);
@@ -57,7 +41,7 @@ const Best = ({ in: inProp }) => {
 
   return (
     <Results>
-      {data.loading && (
+      {/* {data.loading && (
         <Grid
           visible={true}
           height="80"
@@ -68,33 +52,25 @@ const Best = ({ in: inProp }) => {
           wrapperStyle={{}}
           wrapperClass="grid-wrapper"
         />
-      )}
-      <AnimatePresence mode="wait" initial={true}>
-        {/* <TransitionGroup> */}
+      )} */}
+      <AnimatePresence initial={true}>
         {data.results.map((book, nodeRef) => {
           return (
-            // <CSSTransition
-            //   key={uniqid()}
-            //   nodeRef={nodeRef}
-            //   timeout={500}
-            //   classNames="item"
-            // >
             <motion.div
-              // fix
               location={location}
               key={location.pathname}
-              //
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
             >
+              {/* <br />
+              <br />
+              <div>ABSDFSDFSDFF</div> */}
               <Card book={book}></Card>
             </motion.div>
-            // </CSSTransition>
           );
         })}
-        {/* </TransitionGroup> */}
       </AnimatePresence>
     </Results>
   );

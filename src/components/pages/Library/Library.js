@@ -23,7 +23,7 @@ const Library = () => {
 
   useEffect(() => {
     //setTimeout(getBookInfo, 300);
-     getBookInfo();
+    getBookInfo();
   }, []);
 
   //localStorage.setItem("library", JSON.stringify(books));
@@ -81,7 +81,7 @@ const Library = () => {
             console.log("setting book state");
             allBooks.push(bookObj);
             setBooks([...books, ...allBooks]);
-            setData({...data, loading: false})
+            setData({ ...data, loading: false });
           }
         })
         .catch((error) => {
