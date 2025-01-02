@@ -104,7 +104,7 @@ const Library = () => {
           wrapperClass="grid-wrapper"
         />
       )}
-      <AnimatePresence mode="wait" initial={true}>
+      {/* <AnimatePresence mode="wait" initial={true}>
         <motion.div
           key={uniqid()}
           initial={{ opacity: 0 }}
@@ -112,21 +112,23 @@ const Library = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
           className="results-ul library-layout"
-        >
-          {books.length > 0 &&
-            books.map((book) => {
-              return (
-                <LibraryBook
-                  location={location}
-                  key={location.pathname}
-                  // key={uniqid()}
-                  className="library-book"
-                  book={book}
-                ></LibraryBook>
-              );
-            })}
-        </motion.div>
-      </AnimatePresence>
+        > */}
+      <div className="results-ul library-layout">
+        {books.length > 0 &&
+          books.map((book) => {
+            return (
+              <LibraryBook
+                location={location}
+                key={location.pathname}
+                // key={uniqid()}
+                className="library-book"
+                book={book}
+              ></LibraryBook>
+            );
+          })}
+      </div>
+      {/* </motion.div>
+      </AnimatePresence> */}
     </Results>
   );
 };
